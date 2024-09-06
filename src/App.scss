@@ -1,0 +1,91 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+$color-amber: #f4b300;
+$color-emerald: #298a34;
+$color-ruby: #d2082f;
+$color-sapphire: #0089c3;
+$color-amethyst: #80387b;
+$color-steel: #9fa9b3;
+
+$colors: (
+  amber: $color-amber,
+  emerald: $color-emerald,
+  ruby: $color-ruby,
+  sapphire: $color-sapphire,
+  amethyst: $color-amethyst,
+  steel: $color-steel,
+);
+
+.player-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-list .player {
+  display: flex;
+  justify-content: space-between;
+}
+
+.color-picker {
+  display: flex;
+  gap: 4px;
+
+  .pair {
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+
+    @each $name, $color in $colors {
+      &.#{$name} {
+        background-color: lighten($color, 50%);
+      }
+    }
+  }
+
+  .selected.pair,
+  .pair:hover {
+    @each $name, $color in $colors {
+      &.#{$name} {
+        background-color: $color;
+      }
+    }
+  }
+}
